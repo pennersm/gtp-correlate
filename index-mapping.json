@@ -1,0 +1,581 @@
+
+# version 3 , 28Oct2021
+
+PUT _component_template/pan-fwcomp-headers
+{
+  "version": 3,
+  "template": {
+    "mappings": {
+      "properties": {
+        "fw_log_time" : {
+          "format" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+          "index" : true,
+          "ignore_malformed" : false,
+          "store" : false,
+          "type" : "date",
+          "doc_values" : true
+        },
+        "logtype" : {
+          "type" : "keyword"
+        },
+        "serial" : {
+          "type" : "keyword"
+        },
+        "device_name" : {
+          "type" : "keyword"
+        },
+        "vsys" : {
+          "type" : "keyword"
+        },
+        "imsi" : {
+          "type" : "keyword"
+        },
+        "imei" : {
+          "type" : "keyword"
+        },
+        "seskey" : {
+          "type" : "keyword"
+        },
+        "session_stat" : {
+          "type" : "keyword"
+        },
+        "devkey" : {
+          "type" : "keyword"
+        },
+        "subkey" : {
+          "type" : "keyword"
+        },
+        "gtpkey_dst" : {
+          "type" : "keyword"
+        },
+        "gtpkey_src" : {
+          "type" : "keyword"
+        },
+        "gtpkey_ue" : {
+          "type" : "keyword"
+        }
+      }
+    }
+  }
+}
+
+PUT _component_template/pan-fwcomp-threat
+{
+  "version": 3,
+  "template": {
+    "mappings": {
+      "properties": {
+        "threat_src" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "threat_dst" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "threat_sport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "threat_dport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "threat_proto" : {
+          "type" : "keyword"
+        },
+        "threat_direction" : {
+          "type" : "keyword"
+        },
+        "threat_app" : {
+          "type" : "keyword"
+        },
+        "threat_tunnel" : {
+          "type" : "keyword"
+        },
+        "threat_threatid" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "threat_severity" : {
+          "type" : "keyword"
+        },
+        "threat_action" : {
+          "type" : "keyword"
+        },
+        "threat_sessionid" : {
+          "type" : "keyword"
+        },
+        "threat_subtype" : {
+          "type" : "keyword"
+        },
+        "threat_category" : {
+          "type" : "keyword"
+        },
+        "threat_flags" : {
+          "type" : "keyword"
+        },
+        "threat_user_agent" : {
+          "type" : "keyword"
+        },
+        "threat_referer" : {
+          "type" : "keyword"
+        },
+        "threat_http_method" : {
+          "type" : "keyword"
+        },
+        "threat_http_headers" : {
+          "type" : "keyword"
+        },
+        "threat_filetype" : {
+          "type" : "keyword"
+        },
+        "threat_filedigest" : {
+          "type" : "keyword"
+        },
+        "threat_file_url": {
+          "type" : "keyword"
+        },
+        "threat_sig_flags" : {
+          "type" : "keyword"
+        },
+        "threat_xff" : {
+          "type" : "keyword"
+        },
+        "threat_url_idx" : {
+          "type" : "keyword"
+        },
+        "threat_sender": {
+          "type" : "keyword"
+        },
+        "threat_subject" : {
+          "type" : "keyword"
+        },
+        "threat_recipient" : {
+          "type" : "keyword"
+        },
+        "threat_name" : {
+          "type" : "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 60
+            }
+          }
+        },
+        "threat_rule" : {
+          "type" : "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 80
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT _component_template/pan-fwcomp-gtp
+{
+  "version": 3,
+  "template": {
+    "mappings": {
+      "properties": {
+        "gtp_src" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "gtp_dst" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "gtp_end_ip_addr" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "gtp_event_type" : {
+          "type" : "keyword"
+        },
+        "gtp_proto" : {
+          "type" : "keyword"
+        },
+        "gtp_cause_code" : {
+          "type" : "keyword"
+        },
+        "gtp_severity" : {
+          "type" : "keyword"
+        },
+        "gtp_sport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "gtp_mcc" : {
+          "type" : "keyword"
+        },
+        "gtp_tunnel" : {
+          "type" : "keyword"
+        },
+        "gtp_mnc" : {
+          "type" : "keyword"
+        },
+        "gtp_cell_id" : {
+          "type" : "keyword"
+        },
+        "gtp_teid1" : {
+          "type" : "keyword"
+        },
+        "gtp_sessionid" : {
+          "type" : "keyword"
+        },
+        "gtp_msisdn" : {
+          "type" : "keyword"
+        },
+        "gtp_teid2" : {
+          "type" : "keyword"
+        },
+        "gtp_area_code" : {
+          "type" : "keyword"
+        },
+        "gtp_dport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "gtp_event_code" : {
+          "type" : "keyword"
+        },
+        "gtp_rat" : {
+          "type" : "keyword"
+        },
+        "gtp_action" : {
+          "type" : "keyword"
+        },
+        "gtp_msg_type" : {
+          "type" : "keyword"
+        },
+        "gtp_app" : {
+          "type" : "keyword"
+        },
+        "gtp_interface" : {
+          "type" : "keyword"
+        },
+        "gtp_apn" : {
+          "type" : "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 80
+            }
+          }
+        },
+        "gtp_rule" : {
+          "type" : "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 80
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+PUT _component_template/pan-fwcomp-traffic
+{
+  "version": 3,
+  "template": {
+    "mappings": {
+      "properties": {
+        "traffic_src" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "traffic_dst" : {
+          "index" : true,
+          "type" : "ip",
+          "doc_values" : true
+        },
+        "traffic_sport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "traffic_dport" : {
+          "type" : "integer",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "traffic_proto" : {
+          "type" : "keyword"
+        },
+        "traffic_tunnel" : {
+          "type" : "keyword"
+        },
+        "traffic_app" : {
+          "type" : "keyword"
+        },
+        "traffic_sessionid" : {
+          "type" : "keyword"
+        },
+        "traffic_action" : {
+          "type" : "keyword"
+        },
+        "traffic_subtype" : {
+          "type" : "keyword"
+        },
+        "traffic_session_end_reason" : {
+          "type" : "keyword"
+        },
+        "traffic_pkts" : {
+          "type" : "keyword"
+        },
+        "traffic_pkts_received" : {
+          "type" : "keyword"
+        },
+        "traffic_pkts_sent" : {
+          "type" : "keyword"
+        },
+        "traffic_bytes" : {
+          "type" : "keyword"
+        },
+        "traffic_bytes_received" : {
+          "type" : "keyword"
+        },
+        "traffic_bytes_sent" : {
+          "type" : "keyword"
+        },
+        "traffic_flags" : {
+          "type" : "keyword"
+        },
+        "traffic_rule" : {
+          "type" : "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 80
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+PUT _index_template/pan-fwlog-threat
+{
+  "index_patterns": [ "pan-fwlog-threat-*" ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "pan-ilm-fwlogstream",
+      "index.lifecycle.rollover_alias": "pan-fwlog-threat"
+    },
+    "aliases": {
+      "pan-fwlog-threat":{
+        "is_write_index": "true"
+      }
+    }
+  },
+  "composed_of": [ "pan-fwcomp-headers", "pan-fwcomp-threat" ],
+  "version": 3
+}
+
+PUT _index_template/pan-fwlog-gtp
+{
+  "index_patterns": [ "pan-fwlog-gtp-*" ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "pan-ilm-fwlogstream",
+      "index.lifecycle.rollover_alias": "pan-fwlog-gtp"
+    },
+    "aliases": {
+      "pan-fwlog-gtp":{
+        "is_write_index": "true"
+      }
+    }
+  },
+  "composed_of": [ "pan-fwcomp-headers", "pan-fwcomp-gtp" ],
+  "version": 3
+}
+
+PUT _index_template/pan-fwlog-traffic
+{
+  "index_patterns": [ "pan-fwlog-traffic-*" ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "pan-ilm-fwlogstream",
+      "index.lifecycle.rollover_alias": "pan-fwlog-traffic"
+    },
+    "aliases": {
+      "pan-fwlog-traffic":{
+        "is_write_index": "true"
+      }
+    }
+  },
+  "composed_of": [ "pan-fwcomp-headers", "pan-fwcomp-traffic" ],
+  "version": 3
+
+}
+
+PUT _index_template/pan-x-gtp-threat
+{
+  "index_patterns": [ "pan-x-gtp-threat-*" ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "pan-ilm-x-threat",
+      "index.lifecycle.rollover_alias": "pan-x-gtp-threat"
+    },
+    "mappings": {
+      "properties": {
+        "threat_fw_log_time": {
+         "format" : "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+          "index" : true,
+          "ignore_malformed" : false,
+          "store" : false,
+          "type" : "date",
+          "doc_values" : true
+        },
+        "gtp_seskey": {
+          "type": "keyword"
+        }
+      }
+    },
+    "aliases": {
+      "pan-x-gtp-threat":{
+        "is_write_index": "true"
+      }
+    }
+  },
+  "composed_of": [ "pan-fwcomp-headers", "pan-fwcomp-gtp", "pan-fwcomp-threat" ],
+  "version": 3
+}
+
+PUT _ilm/policy/pan-ilm-fwlogstream
+{
+  "policy" : {
+    "phases" : {
+      "warm" : {
+        "min_age" : "24h",
+        "actions" : {
+          "allocate" : {
+            "number_of_replicas" : 0,
+            "include" : { },
+            "exclude" : { },
+            "require" : { }
+          },
+          "set_priority" : {
+            "priority" : 50
+          }
+        }
+      },
+      "hot" : {
+        "min_age" : "0ms",
+        "actions" : {
+          "rollover" : {
+            "max_size" : "200gb",
+            "max_primary_shard_size" : "200gb",
+            "max_age" : "24h"
+          },
+          "set_priority" : {
+            "priority" : 100
+          }
+        }
+      },
+      "delete" : {
+        "min_age" : "168h",
+        "actions" : {
+          "delete" : {
+            "delete_searchable_snapshot" : false
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT _ilm/policy/pan-ilm-x-threat
+{
+  "policy" : {
+    "phases" : {
+      "warm" : {
+        "min_age" : "7d",
+        "actions" : {
+          "allocate" : {
+            "number_of_replicas" : 0,
+            "include" : { },
+            "exclude" : { },
+            "require" : { }
+          },
+          "set_priority" : {
+            "priority" : 50
+          }
+        }
+      },
+      "hot" : {
+        "min_age" : "0ms",
+        "actions" : {
+          "rollover" : {
+            "max_size" : "200gb",
+            "max_primary_shard_size" : "200gb",
+            "max_age" : "24h"
+          },
+          "set_priority" : {
+            "priority" : 100
+          }
+        }
+      },
+      "delete" : {
+        "min_age" : "42d",
+        "actions" : {
+          "delete" : {
+            "delete_searchable_snapshot" : false
+          }
+        }
+      }
+    }
+  }
+}
